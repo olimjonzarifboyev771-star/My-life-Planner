@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Life OS</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pur:#534AB7;--pur-d:#3C3489;--pur-l:#EEEDFE;
+  --teal:#1D9E75;--teal-l:#E1F5EE;
+  --amb:#BA7517;--amb-l:#FAEEDA;
+  --cor:#993C1D;--cor-l:#FAECE7;
+  --pink:#D4537E;--pink-l:#FBEAF0;
+  --blu:#378ADD;--blu-l:#E6F1FB;
+  --bg:#FAFAF8;--bg2:#F4F2ED;--bg3:#EDEBE4;
+  --tx:#1C1C1A;--tx2:#5C5B56;--tx3:#9C9B96;
+  --bd:rgba(0,0,0,0.08);--bd2:rgba(0,0,0,0.14);
+  --r:12px;--rs:8px;
+  --fd:'Playfair Display',Georgia,serif;
+  --fb:'IBM Plex Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fb);background:var(--bg);color:var(--tx);min-height:100vh;font-size:14px}
+.topnav{background:#fff;border-bottom:.5px solid var(--bd2);padding:0 1rem;display:flex;align-items:center;gap:0;position:sticky;top:0;z-index:100;overflow-x:auto}
+.logo{font-family:var(--fd);font-size:16px;font-weight:600;color:var(--pur-d);padding:13px 0;margin-right:1.5rem;white-space:nowrap}
+.nav-tabs{display:flex;gap:0}
+.nav-tab{padding:13px 11px;font-size:12px;cursor:pointer;border:none;background:none;color:var(--tx2);border-bottom:2px solid transparent;white-space:nowrap;transition:all .15s;font-family:var(--fb)}
+.nav-tab.active{color:var(--pur);border-bottom-color:var(--pur);font-weight:500}
+.nav-tab:hover:not(.active){background:var(--bg2)}
+.main{padding:1.25rem;max-width:920px;margin:0 auto}
+.sec{display:none}.sec.active{display:block}
+.card{background:#fff;border:.5px solid var(--bd);border-radius:var(--r);padding:1.125rem;margin-bottom:10px}
+.card-title{font-size:13px;font-weight:500;color:var(--tx);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-bottom:10px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:12px}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-bottom:12px}
+.mc{background:var(--bg2);border-radius:var(--rs);padding:.875rem}
+.mc-lbl{font-size:10px;color:var(--tx3);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px}
+.mc-val{font-size:22px;font-weight:500;color:var(--tx);font-family:var(--fd)}
+.mc-sub{font-size:11px;color:var(--tx3);margin-top:2px}
+.prog-wrap{margin-bottom:9px}
+.prog-label{display:flex;justify-content:space-between;font-size:12px;color:var(--tx2);margin-bottom:4px}
+.prog-bar{height:5px;background:var(--bg3);border-radius:99px;overflow:hidden}
+.prog-fill{height:100%;border-radius:99px;transition:width .4s}
+.badge{display:inline-block;padding:2px 7px;border-radius:var(--rs);font-size:10px;font-weight:500}
+.bp{background:var(--pur-l);color:var(--pur-d)}
+.bt{background:var(--teal-l);color:#0F6E56}
+.ba{background:var(--amb-l);color:#633806}
+.bc{background:var(--cor-l);color:var(--cor)}
+.bb{background:var(--blu-l);color:#185FA5}
+.stabs{display:flex;gap:5px;margin-bottom:1rem;flex-wrap:wrap}
+.stab{padding:5px 11px;border-radius:99px;font-size:12px;cursor:pointer;border:.5px solid var(--bd2);background:#fff;color:var(--tx2);font-family:var(--fb);transition:all .15s}
+.stab.active{background:var(--pur);color:#fff;border-color:var(--pur)}
+.stab:hover:not(.active){background:var(--bg2)}
+.sec-hdr{margin-bottom:1.125rem}
+.sec-hdr h2{font-size:19px;font-weight:500;color:var(--tx);font-family:var(--fd)}
+.sec-hdr p{font-size:12px;color:var(--tx2);margin-top:2px}
+.btn{padding:7px 13px;border-radius:var(--rs);border:.5px solid var(--bd2);background:#fff;color:var(--tx);font-size:12px;cursor:pointer;font-family:var(--fb);transition:all .15s}
+.btn:hover{background:var(--bg2)}
+.btn-p{background:var(--pur);color:#fff;border-color:var(--pur)}
+.btn-p:hover{background:var(--pur-d)}
+.btn-g{background:var(--teal);color:#fff;border-color:var(--teal)}
+.btn-r{background:#c0392b;color:#fff;border-color:#c0392b}
+/* NAMOZ */
+.nm-card{border-radius:var(--r);padding:.75rem;text-align:center;border:.5px solid var(--bd);background:#fff;position:relative}
+.nm-card.nxt{border:2px solid var(--pur);background:var(--pur-l)}
+.nm-name{font-size:10px;color:var(--tx3);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;font-weight:500}
+.nm-time{font-size:17px;font-weight:500;color:var(--tx);font-family:var(--fd)}
+.nm-rak{font-size:10px;color:var(--pur);margin-top:2px}
+.nm-card.nxt .nm-name{color:var(--pur)}.nm-card.nxt .nm-time{color:var(--pur-d)}
+.nxt-badge{position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--pur);color:#fff;font-size:9px;padding:2px 7px;border-radius:99px;white-space:nowrap}
+.cd-box{text-align:center;padding:.75rem;background:var(--pur-l);border-radius:var(--rs);margin-bottom:12px}
+.cd-lbl{font-size:11px;color:var(--pur);margin-bottom:3px}
+.cd-time{font-size:30px;font-weight:500;color:var(--pur-d);letter-spacing:2px;font-family:var(--fd)}
+/* TASK TIMER */
+.task-row{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:.5px solid var(--bd)}
+.task-row:last-child{border-bottom:none}
+.chk{width:18px;height:18px;border:1.5px solid var(--bd2);border-radius:4px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .15s;font-size:11px;color:#fff}
+.chk.done{background:var(--pur);border-color:var(--pur)}
+.task-info{flex:1}
+.task-name{font-size:13px;color:var(--tx)}
+.task-name.done{text-decoration:line-through;color:var(--tx3)}
+.task-meta{font-size:11px;color:var(--tx3);margin-top:2px;display:flex;align-items:center;gap:6px}
+.task-timer-row{display:flex;align-items:center;gap:5px;margin-top:5px;flex-wrap:wrap}
+.t-disp{font-size:13px;font-weight:500;color:var(--pur);font-family:var(--fd);min-width:45px}
+/* SURA */
+.sura-card{background:#fff;border:.5px solid var(--bd);border-radius:var(--r);padding:.875rem;margin-bottom:7px;cursor:pointer}
+.sura-arabic{font-size:19px;color:var(--pur-d);direction:rtl;line-height:2;margin:10px 0;font-family:serif}
+.sura-latin{font-size:12px;color:var(--teal);line-height:1.8;margin-bottom:6px;font-style:italic}
+.sura-trans{font-size:12px;color:var(--tx2);line-height:1.65}
+.sura-body{display:none;margin-top:10px;border-top:.5px solid var(--bd);padding-top:10px}
+.sura-body.open{display:block}
+/* LESSON */
+.lesson-btn{display:flex;align-items:flex-start;gap:8px;padding:9px 10px;border-radius:var(--rs);cursor:pointer;border:.5px solid var(--bd);background:#fff;margin-bottom:6px;width:100%;text-align:left;font-family:var(--fb);transition:all .15s}
+.lesson-btn:hover{background:var(--pur-l);border-color:var(--pur)}
+.lesson-btn.done-l{background:var(--teal-l);border-color:var(--teal)}
+.lesson-content{flex:1}
+.lesson-title{font-size:13px;font-weight:500;color:var(--tx)}
+.lesson-sub{font-size:11px;color:var(--tx3);margin-top:2px;line-height:1.5}
+.lesson-expand{display:none;margin-top:10px;padding-top:10px;border-top:.5px solid var(--bd)}
+.lesson-expand.open{display:block}
+/* CALENDAR */
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:1rem}
+.cal-day{border-radius:var(--rs);padding:6px 4px;text-align:center;cursor:pointer;border:.5px solid var(--bd);background:#fff;min-height:52px;transition:all .15s}
+.cal-day:hover{border-color:var(--pur)}
+.cal-day.today{border:1.5px solid var(--pur);background:var(--pur-l)}
+.cal-day.has-data{background:var(--teal-l);border-color:var(--teal)}
+.cal-day.other-month{opacity:.35}
+.cal-dn{font-size:11px;font-weight:500;color:var(--tx)}
+.cal-dots{display:flex;gap:2px;justify-content:center;flex-wrap:wrap;margin-top:3px}
+.cal-dot{width:5px;height:5px;border-radius:50%}
+.cal-wl{font-size:10px;text-align:center;color:var(--tx3);padding:3px 0}
+/* HABIT */
+.hab-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.hday{height:26px;border-radius:4px;background:var(--bg3);font-size:10px;display:flex;align-items:center;justify-content:center;color:var(--tx3);cursor:pointer;border:none;transition:all .1s}
+.hday.done{background:var(--pur);color:#fff}
+.hday.today-h{outline:1.5px solid var(--pur)}
+.wlb{font-size:9px;text-align:center;color:var(--tx3)}
+.wlrow{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:3px}
+.hab-row{margin-bottom:12px}
+.hab-name{font-size:12px;font-weight:500;color:var(--tx);margin-bottom:5px;display:flex;justify-content:space-between}
+/* FINANCE */
+.fin-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:.5px solid var(--bd);font-size:13px}
+.fin-row:last-child{border-bottom:none}
+.gv{color:var(--teal);font-weight:500}.rv{color:var(--cor);font-weight:500}
+/* QUOTE */
+.quote-box{background:var(--pur-l);border-left:3px solid var(--pur);border-radius:0 var(--rs) var(--rs) 0;padding:12px 14px;margin-bottom:1rem}
+.quote-text{font-size:14px;color:var(--pur-d);line-height:1.65;font-family:var(--fd);font-style:italic}
+.quote-author{font-size:11px;color:var(--pur);margin-top:5px}
+/* TIMER */
+.timer-disp{font-size:48px;font-weight:500;color:var(--tx);letter-spacing:3px;text-align:center;font-family:var(--fd);margin:1rem 0}
+input[type=text],select,input[type=number]{padding:7px 10px;border-radius:var(--rs);border:.5px solid var(--bd2);background:#fff;color:var(--tx);font-size:12px;font-family:var(--fb);outline:none}
+input[type=text]:focus,select:focus{border-color:var(--pur);box-shadow:0 0 0 3px rgba(83,74,183,.1)}
+.rakat-table{width:100%;font-size:12px;border-collapse:collapse}
+.rakat-table th{color:var(--tx3);font-size:10px;font-weight:400;text-align:left;padding:4px 0;border-bottom:.5px solid var(--bd)}
+.rakat-table td{padding:5px 0;border-bottom:.5px solid var(--bd);color:var(--tx)}
+.rakat-table tr:last-child td{border-bottom:none}
+.rakat-table td:first-child{font-weight:500}
+.detail-box{background:var(--bg2);border-radius:var(--rs);padding:10px 12px;font-size:12px;color:var(--tx2);line-height:1.7;margin-top:8px}
+.detail-box strong{color:var(--tx);font-weight:500}
+@media(max-width:600px){.main{padding:.875rem}.grid5{grid-template-columns:repeat(3,1fr)}.topnav{padding:0 .75rem}.logo{font-size:14px;margin-right:1rem}}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <div class="logo">My Life OS</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showTab('dashboard',this)">📊 Dashboard</button>
+    <button class="nav-tab" onclick="showTab('vazifalar',this)">✅ Vazifalar</button>
+    <button class="nav-tab" onclick="showTab('namoz',this)">🕌 Namoz</button>
+    <button class="nav-tab" onclick="showTab('sura',this)">📖 Suralar</button>
+    <button class="nav-tab" onclick="showTab('kitob',this)">📚 Kitoblar</button>
+    <button class="nav-tab" onclick="showTab('biz',this)">💼 Biznes</button>
+    <button class="nav-tab" onclick="showTab('ilm',this)">🎓 Islomiy ilm</button>
+    <button class="nav-tab" onclick="showTab('odatlar',this)">🔄 Odatlar</button>
+    <button class="nav-tab" onclick="showTab('moliya',this)">💰 Moliya</button>
+    <button class="nav-tab" onclick="showTab('focus',this)">⏱ Focus</button>
+    <button class="nav-tab" onclick="showTab('kalendar',this)">📅 Kalendar</button>
+  </div>
+</nav>
+<main class="main">
+
+<!-- ========== DASHBOARD ========== -->
+<div id="tab-dashboard" class="sec active">
+  <div class="sec-hdr"><h2>Salom! Bugun ham g'olib bo'l 💪</h2><p id="dash-date"></p></div>
+  <div class="grid3">
+    <div class="mc"><div class="mc-lbl">Bugungi vazifalar</div><div class="mc-val" id="d-tasks">0/0</div><div class="mc-sub">bajarildi</div></div>
+    <div class="mc"><div class="mc-lbl">Streak</div><div class="mc-val">7 🔥</div><div class="mc-sub">kun uzluksiz</div></div>
+    <div class="mc"><div class="mc-lbl">Hayot balansi</div><div class="mc-val" id="d-bal">66%</div><div class="mc-sub">o'sishda</div></div>
+    <div class="mc"><div class="mc-lbl">Kitoblar</div><div class="mc-val" id="d-books">7/24</div><div class="mc-sub">2025 maqsad</div></div>
+    <div class="mc"><div class="mc-lbl">Keyingi namoz</div><div class="mc-val" id="d-namoz" style="font-size:14px">—</div><div class="mc-sub" id="d-namoz-t"></div></div>
+    <div class="mc"><div class="mc-lbl">Jamg'arma</div><div class="mc-val">$240</div><div class="mc-sub">maqsad $500</div></div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">🌐 Hayot sohalari</div>
+      <div class="prog-wrap"><div class="prog-label"><span>🧠 Ilm</span><span id="pi">65%</span></div><div class="prog-bar"><div class="prog-fill" id="bi" style="width:65%;background:var(--pur)"></div></div></div>
+      <div class="prog-wrap"><div class="prog-label"><span>💼 Biznes</span><span id="pb">40%</span></div><div class="prog-bar"><div class="prog-fill" id="bb2" style="width:40%;background:var(--teal)"></div></div></div>
+      <div class="prog-wrap"><div class="prog-label"><span>🏋️ Jismoniy</span><span id="pj">55%</span></div><div class="prog-bar"><div class="prog-fill" id="bj" style="width:55%;background:var(--amb)"></div></div></div>
+      <div class="prog-wrap"><div class="prog-label"><span>🕌 Ma'naviyat</span><span id="pr">70%</span></div><div class="prog-bar"><div class="prog-fill" id="br" style="width:70%;background:var(--pink)"></div></div></div>
+      <div class="prog-wrap"><div class="prog-label"><span>💰 Moliya</span><span id="pm">35%</span></div><div class="prog-bar"><div class="prog-fill" id="bm" style="width:35%;background:var(--cor)"></div></div></div>
+      <div class="prog-wrap"><div class="prog-label"><span>👥 Munosabatlar</span><span id="pmu">80%</span></div><div class="prog-bar"><div class="prog-fill" id="bmu" style="width:80%;background:var(--blu)"></div></div></div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:9px">
+        <button class="btn" style="font-size:11px;padding:4px 8px" onclick="upArea('i')">Ilm+5</button>
+        <button class="btn" style="font-size:11px;padding:4px 8px" onclick="upArea('b')">Biznes+5</button>
+        <button class="btn" style="font-size:11px;padding:4px 8px" onclick="upArea('j')">Sport+5</button>
+        <button class="btn" style="font-size:11px;padding:4px 8px" onclick="upArea('r')">Ruh+5</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">☀️ Bugungi reja</div>
+      <div class="quote-box"><div class="quote-text" id="q-txt">"Intizom — ozodlikning eng oliy shaklidir."</div><div class="quote-author" id="q-auth">— Jorge Bucay</div></div>
+      <div id="dash-tasks-list"></div>
+      <button class="btn btn-p" style="width:100%;margin-top:10px;font-size:12px" onclick="showTab('vazifalar',null);document.querySelectorAll('.nav-tab')[1].classList.add('active')">📋 Barcha vazifalarni ko'rish →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== VAZIFALAR ========== -->
+<div id="tab-vazifalar" class="sec">
+  <div class="sec-hdr"><h2>✅ Bugungi vazifalar</h2><p>Vaqt rejasi bilan — boshlash, pauza, tugatish</p></div>
+  <div class="card" style="background:var(--pur-l);border-color:var(--pur)">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+      <div><div style="font-size:11px;color:var(--pur);margin-bottom:2px">AKTIV VAZIFA TAYMER</div><div style="font-size:22px;font-weight:500;color:var(--pur-d);font-family:var(--fd)" id="active-task-name">Vazifa tanlanmagan</div></div>
+      <div style="text-align:right"><div style="font-size:32px;font-weight:500;color:var(--pur-d);font-family:var(--fd)" id="active-timer">00:00</div><div style="font-size:11px;color:var(--pur)" id="active-timer-target"></div></div>
+    </div>
+    <div style="display:flex;gap:7px;margin-top:10px;flex-wrap:wrap">
+      <button class="btn btn-g" id="vbtn-start" onclick="activeTaskStart()">▶ Boshlash</button>
+      <button class="btn" id="vbtn-pause" onclick="activeTaskPause()" disabled>⏸ Pauza</button>
+      <button class="btn btn-r" id="vbtn-done" onclick="activeTaskDone()" disabled>✓ Tugatish</button>
+    </div>
+  </div>
+  <div id="vazifa-list"></div>
+  <div class="card" style="margin-top:4px">
+    <div class="card-title">➕ Yangi vazifa qo'shish</div>
+    <div style="display:flex;gap:7px;flex-wrap:wrap;align-items:center">
+      <input type="text" id="new-task-name" placeholder="Vazifa nomi..." style="flex:1;min-width:160px">
+      <input type="number" id="new-task-min" placeholder="min" style="width:60px">
+      <select id="new-task-cat">
+        <option value="ma'naviyat">🕌 Ma'naviyat</option>
+        <option value="ilm">🧠 Ilm</option>
+        <option value="biznes">💼 Biznes</option>
+        <option value="sport">🏋️ Sport</option>
+        <option value="moliya">💰 Moliya</option>
+        <option value="oila">👨‍👩‍👧 Oila</option>
+      </select>
+      <button class="btn btn-p" onclick="addVazifa()">+ Qo'sh</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== NAMOZ ========== -->
+<div id="tab-namoz" class="sec">
+  <div class="sec-hdr"><h2>🕌 Namoz vaqtlari</h2><p>Toshkent • namozvaqti.uz</p></div>
+  <div class="cd-box"><div class="cd-lbl" id="cd-lbl">Keyingi namozgacha</div><div class="cd-time" id="cd-time">00:00:00</div></div>
+  <div class="grid5" id="namoz-grid"></div>
+  <div class="card">
+    <div class="card-title">📋 Rakatlar jadvali</div>
+    <table class="rakat-table">
+      <tr><th>Namoz</th><th>Sunnat (oldin)</th><th>Farz</th><th>Sunnat (keyin)</th><th>Vitr</th><th>Jami</th></tr>
+      <tr><td>Bomdod</td><td>2</td><td>2</td><td>—</td><td>—</td><td>4</td></tr>
+      <tr style="background:var(--bg2)"><td>Peshin</td><td>4</td><td>4</td><td>2+2</td><td>—</td><td>12</td></tr>
+      <tr><td>Asr</td><td>4</td><td>4</td><td>—</td><td>—</td><td>8</td></tr>
+      <tr style="background:var(--bg2)"><td>Shom</td><td>—</td><td>3</td><td>2</td><td>—</td><td>5</td></tr>
+      <tr><td>Xufton</td><td>4</td><td>4</td><td>2</td><td>3</td><td>13</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <div class="card-title">✅ Namoz bajarish belgisi</div>
+    <div id="namoz-check-list"></div>
+  </div>
+</div>
+
+<!-- ========== SURALAR ========== -->
+<div id="tab-sura" class="sec">
+  <div class="sec-hdr"><h2>📖 Sura yodlash dasturi</h2><p>Arabcha • Lotin • O'zbek tarjimasi</p></div>
+  <div class="stabs" id="sura-stabs">
+    <button class="stab active" onclick="showSuras('boshlang',this)">🌱 Boshlang'ich</button>
+    <button class="stab" onclick="showSuras('orta',this)">📗 O'rta</button>
+    <button class="stab" onclick="showSuras('uzun',this)">📘 Uzun</button>
+  </div>
+  <div id="sura-list"></div>
+</div>
+
+<!-- ========== KITOBLAR ========== -->
+<div id="tab-kitob" class="sec">
+  <div class="sec-hdr"><h2>📚 Kitob o'qish dasturi</h2><p>Kuniga 30–45 daqiqa = yilda 20+ kitob</p></div>
+  <div class="stabs" id="kitob-stabs">
+    <button class="stab active" onclick="showBooks('biznes',this)">💼 Biznes</button>
+    <button class="stab" onclick="showBooks('shaxsiy',this)">🧠 Shaxsiy o'sish</button>
+    <button class="stab" onclick="showBooks('manav',this)">🕌 Ma'naviy</button>
+  </div>
+  <div id="book-list"></div>
+</div>
+
+<!-- ========== BIZNES ========== -->
+<div id="tab-biz" class="sec">
+  <div class="sec-hdr"><h2>💼 Biznes maktabi</h2><p>Noldan biznesga — amaliy darslar. Bosib o'qing.</p></div>
+  <div class="stabs" id="biz-stabs">
+    <button class="stab active" onclick="showBiz('asos',this)">🏗️ Asoslar</button>
+    <button class="stab" onclick="showBiz('tahlil',this)">📊 Tahlil</button>
+    <button class="stab" onclick="showBiz('kompaniya',this)">🏢 Kompaniyalar</button>
+    <button class="stab" onclick="showBiz('marketing',this)">📣 Marketing</button>
+  </div>
+  <div id="biz-list"></div>
+</div>
+
+<!-- ========== ISLOMIY ILM ========== -->
+<div id="tab-ilm" class="sec">
+  <div class="sec-hdr"><h2>🎓 Islomiy ilm</h2><p>Kunlik o'rganish — bosib ko'ring</p></div>
+  <div id="ilm-list"></div>
+</div>
+
+<!-- ========== ODATLAR ========== -->
+<div id="tab-odatlar" class="sec">
+  <div class="sec-hdr"><h2>🔄 Kunlik odatlar</h2><p>Haftalik kuzatuv</p></div>
+  <div class="card">
+    <div class="wlrow"><div class="wlb">Du</div><div class="wlb">Se</div><div class="wlb">Ch</div><div class="wlb">Pa</div><div class="wlb">Ju</div><div class="wlb">Sh</div><div class="wlb">Ya</div></div>
+    <div id="hab-cont"></div>
+  </div>
+</div>
+
+<!-- ========== MOLIYA ========== -->
+<div id="tab-moliya" class="sec">
+  <div class="sec-hdr"><h2>💰 Pul boshqaruvi</h2><p>50/30/20 qoidasi</p></div>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">📈 Oylik hisobot</div>
+      <div class="fin-row"><span>Oylik kirim</span><span class="gv">+ $800</span></div>
+      <div class="fin-row"><span>Ijara & kommunal</span><span class="rv">— $200</span></div>
+      <div class="fin-row"><span>Oziq-ovqat</span><span class="rv">— $120</span></div>
+      <div class="fin-row"><span>Ta'lim & kitoblar</span><span class="rv">— $50</span></div>
+      <div class="fin-row"><span>Transport</span><span class="rv">— $40</span></div>
+      <div class="fin-row"><span>Ko'ngilochar</span><span class="rv">— $30</span></div>
+      <div class="fin-row" style="border-top:1px solid var(--bd2);margin-top:4px"><strong>Sof qoldiq</strong><span class="gv" style="font-size:16px">+ $360</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">🐷 50/30/20</div>
+      <div class="prog-wrap"><div class="prog-label"><span>Zaruriyat (50%)</span><span>$400</span></div><div class="prog-bar"><div class="prog-fill" style="width:50%;background:var(--teal)"></div></div></div>
+      <div class="prog-wrap"><div class="prog-label"><span>Istaklar (30%)</span><span>$160</span></div><div class="prog-bar"><div class="prog-fill" style="width:30%;background:var(--amb)"></div></div></div>
+      <div class="prog-wrap"><div class="prog-label"><span>Jamg'arma (20%)</span><span>$240</span></div><div class="prog-bar"><div class="prog-fill" style="width:20%;background:var(--pur)"></div></div></div>
+      <div style="margin-top:12px;padding:10px;background:var(--bg2);border-radius:var(--rs)"><div style="font-size:11px;color:var(--tx3)">Yillik jamg'arma</div><div style="font-size:22px;font-weight:500;font-family:var(--fd)">$2,880</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== FOCUS ========== -->
+<div id="tab-focus" class="sec">
+  <div class="sec-hdr"><h2>⏱ Focus timer</h2><p>Pomodoro texnikasi</p></div>
+  <div class="card" style="text-align:center">
+    <div style="font-size:12px;color:var(--tx2)" id="foc-lbl">Ishchi sessiya</div>
+    <div class="timer-disp" id="foc-disp">25:00</div>
+    <select id="foc-mode" onchange="resetFocus()" style="margin-bottom:12px">
+      <option value="25">Focus — 25 daqiqa</option>
+      <option value="50">Deep work — 50 daqiqa</option>
+      <option value="5">Dam olish — 5 daqiqa</option>
+      <option value="15">Uzoq dam — 15 daqiqa</option>
+    </select>
+    <div style="display:flex;gap:8px;justify-content:center">
+      <button class="btn btn-p" id="foc-start" onclick="startFocus()">▶ Boshlash</button>
+      <button class="btn" onclick="resetFocus()">↺ Qayta</button>
+    </div>
+    <div style="margin-top:12px;font-size:12px;color:var(--tx3)" id="foc-sess">Bugun: 0 ta sessiya</div>
+  </div>
+  <div class="card">
+    <div class="card-title">🕐 Ideal kunlik jadval</div>
+    <div class="prog-wrap"><div class="prog-label"><span>🕌 Ma'naviyat</span><span>1 soat</span></div><div class="prog-bar"><div class="prog-fill" style="width:6%;background:var(--pink)"></div></div></div>
+    <div class="prog-wrap"><div class="prog-label"><span>🧠 Asosiy ish/ta'lim</span><span>6 soat</span></div><div class="prog-bar"><div class="prog-fill" style="width:38%;background:var(--pur)"></div></div></div>
+    <div class="prog-wrap"><div class="prog-label"><span>💼 Biznes</span><span>2 soat</span></div><div class="prog-bar"><div class="prog-fill" style="width:13%;background:var(--teal)"></div></div></div>
+    <div class="prog-wrap"><div class="prog-label"><span>📚 Kitob</span><span>1 soat</span></div><div class="prog-bar"><div class="prog-fill" style="width:6%;background:var(--amb)"></div></div></div>
+    <div class="prog-wrap"><div class="prog-label"><span>🏋️ Sport</span><span>1 soat</span></div><div class="prog-bar"><div class="prog-fill" style="width:6%;background:var(--teal)"></div></div></div>
+    <div class="prog-wrap"><div class="prog-label"><span>👨‍👩‍👧 Oila</span><span>2 soat</span></div><div class="prog-bar"><div class="prog-fill" style="width:13%;background:var(--blu)"></div></div></div>
+    <div class="prog-wrap"><div class="prog-label"><span>😴 Uyqu</span><span>8 soat</span></div><div class="prog-bar"><div class="prog-fill" style="width:50%;background:var(--tx3)"></div></div></div>
+  </div>
+</div>
+
+<!-- ========== KALENDAR ========== -->
+<div id="tab-kalendar" class="sec">
+  <div class="sec-hdr"><h2>📅 Faoliyat kalendari</h2><p>Har kunda nima qildingiz — to'liq tarix</p></div>
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <button class="btn" onclick="calPrev()">‹</button>
+      <div style="font-size:15px;font-weight:500;font-family:var(--fd)" id="cal-title"></div>
+      <button class="btn" onclick="calNext()">›</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:4px">
+      <div class="cal-wl">Du</div><div class="cal-wl">Se</div><div class="cal-wl">Ch</div>
+      <div class="cal-wl">Pa</div><div class="cal-wl">Ju</div><div class="cal-wl">Sh</div><div class="cal-wl">Ya</div>
+    </div>
+    <div class="cal-grid" id="cal-grid"></div>
+  </div>
+  <div class="card" id="cal-detail" style="display:none">
+    <div class="card-title" id="cal-detail-date"></div>
+    <div id="cal-detail-content"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">📊 Umumiy statistika</div>
+    <div class="grid3">
+      <div class="mc"><div class="mc-lbl">Bajarilgan vazifalar</div><div class="mc-val" id="stat-tasks">0</div></div>
+      <div class="mc"><div class="mc-lbl">O'qilgan kitoblar</div><div class="mc-val" id="stat-books">7</div></div>
+      <div class="mc"><div class="mc-lbl">Namozlar (bu oy)</div><div class="mc-val" id="stat-namoz">0</div></div>
+      <div class="mc"><div class="mc-lbl">Sarf qilingan vaqt</div><div class="mc-val" id="stat-time">0 min</div></div>
+      <div class="mc"><div class="mc-lbl">Yodlangan suralar</div><div class="mc-val" id="stat-sura">0</div></div>
+      <div class="mc"><div class="mc-lbl">Biznes darslari</div><div class="mc-val" id="stat-biz">0</div></div>
+    </div>
+  </div>
+</div>
+
+</main>
+<script>
+// ===== STATE =====
+const S = {
+  tasks: [
+    {id:1,name:"Bomdod namozi + 10 daqiqa zikr",min:20,cat:"ma'naviyat",done:false,elapsed:0,running:false},
+    {id:2,name:"30 daqiqa jismoniy mashq",min:30,cat:"sport",done:false,elapsed:0,running:false},
+    {id:3,name:"1 soat kitob o'qish",min:60,cat:"ilm",done:false,elapsed:0,running:false},
+    {id:4,name:"Biznes reja — bozor tahlili",min:45,cat:"biznes",done:false,elapsed:0,running:false},
+    {id:5,name:"Peshin namozi",min:15,cat:"ma'naviyat",done:false,elapsed:0,running:false},
+    {id:6,name:"Asr namozi",min:15,cat:"ma'naviyat",done:false,elapsed:0,running:false},
+    {id:7,name:"Shom namozi",min:15,cat:"ma'naviyat",done:false,elapsed:0,running:false},
+    {id:8,name:"Xufton namozi + Oyat ul-Kursiy",min:20,cat:"ma'naviyat",done:false,elapsed:0,running:false},
+    {id:9,name:"Telegram kanali uchun kontent",min:30,cat:"biznes",done:false,elapsed:0,running:false},
+    {id:10,name:"Suv 2L ichish (kuzatuv)",min:5,cat:"sport",done:false,elapsed:0,running:false}
+  ],
+  activeTask: null,
+  activeInterval: null,
+  areas: {i:65,b:40,j:55,r:70,m:35,mu:80},
+  calYear: new Date().getFullYear(),
+  calMonth: new Date().getMonth(),
+  log: {},
+  namozLog: {},
+  surasDone: [],
+  bizDone: [],
+  bookPages: {},
+  focInterval: null,
+  focSecs: 25*60,
+  focRunning: false,
+  focSessions: 0,
+  habits: [
+    {name:"Bomdod namozi",days:[1,1,1,1,1,0,1]},
+    {name:"30 daqiqa sport",days:[1,0,1,1,0,1,0]},
+    {name:"Kitob o'qish",days:[1,1,1,0,1,1,0]},
+    {name:"Suv 2L ichish",days:[1,1,0,1,1,0,1]},
+    {name:"Telefonsiz 2 soat",days:[0,1,1,1,0,0,1]},
+    {name:"Kundalik yozish",days:[1,0,1,0,1,0,0]}
+  ]
+};
+
+// ===== NAV =====
+function showTab(t, el) {
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+t).classList.add('active');
+  if(el) el.classList.add('active');
+  if(t==='namoz') renderNamoz();
+  if(t==='sura') showSuras('boshlang',null);
+  if(t==='kitob') showBooks('biznes',null);
+  if(t==='biz') showBiz('asos',null);
+  if(t==='ilm') renderIlm();
+  if(t==='odatlar') renderHabits();
+  if(t==='kalendar') renderCal();
+  if(t==='vazifalar') renderVazifalar();
+  if(t==='dashboard') renderDashboard();
+}
+
+// ===== DATE =====
+const DAYS=['Yakshanba','Dushanba','Seshanba','Chorshanba','Payshanba','Juma','Shanba'];
+const MONTHS=['Yanvar','Fevral','Mart','Aprel','May','Iyun','Iyul','Avgust','Sentabr','Oktabr','Noyabr','Dekabr'];
+const today = new Date();
+const todayKey = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+const el_dd = document.getElementById('dash-date');
+if(el_dd) el_dd.textContent = DAYS[today.getDay()]+', '+today.getDate()+' '+MONTHS[today.getMonth()]+' '+today.getFullYear();
+
+// ===== NAMOZ =====
+const prayers=[
+  {name:"Bomdod",time:"04:52",rakat:"4 rakat",h:4,m:52},
+  {name:"Peshin",time:"12:26",rakat:"12 rakat",h:12,m:26},
+  {name:"Asr",time:"17:34",rakat:"8 rakat",h:17,m:34},
+  {name:"Shom",time:"19:52",rakat:"5 rakat",h:19,m:52},
+  {name:"Xufton",time:"21:30",rakat:"13 rakat",h:21,m:30}
+];
+function getNextPrayer(){
+  const n=new Date(), nm=n.getHours()*60+n.getMinutes();
+  let i=prayers.findIndex(p=>p.h*60+p.m>nm);
+  return i===-1?0:i;
+}
+function renderNamoz(){
+  const ni=getNextPrayer(), g=document.getElementById('namoz-grid');
+  if(!g) return;
+  g.innerHTML=prayers.map((p,i)=>`<div class="nm-card ${i===ni?'nxt':''}">
+    ${i===ni?'<div class="nxt-badge">Keyingi</div>':''}
+    <div class="nm-name">${p.name}</div>
+    <div class="nm-time">${p.time}</div>
+    <div class="nm-rak">${p.rakat}</div>
+  </div>`).join('');
+  const ncl=document.getElementById('namoz-check-list');
+  if(ncl) ncl.innerHTML=prayers.map((p,i)=>{
+    const k=todayKey+'-'+p.name, done=S.namozLog[k];
+    return `<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:.5px solid var(--bd)">
+      <div><div style="font-size:13px;font-weight:500">${p.name}</div><div style="font-size:11px;color:var(--tx3)">${p.time} • ${p.rakat}</div></div>
+      <button class="btn ${done?'btn-g':''}" onclick="toggleNamoz('${p.name}')">${done?'✓ O\'qildi':'O\'qish belgisi'}</button>
+    </div>`;
+  }).join('');
+  const dn=document.getElementById('d-namoz');
+  const dnt=document.getElementById('d-namoz-t');
+  if(dn) dn.textContent=prayers[ni].name;
+  if(dnt) dnt.textContent=prayers[ni].time;
+}
+function toggleNamoz(name){
+  const k=todayKey+'-'+name;
+  S.namozLog[k]=!S.namozLog[k];
+  if(!S.log[todayKey]) S.log[todayKey]={tasks:[],namoz:[],suras:[],biz:[],time:0};
+  const arr=S.log[todayKey].namoz;
+  if(S.namozLog[k]&&!arr.includes(name)) arr.push(name);
+  else { const idx=arr.indexOf(name); if(idx>-1) arr.splice(idx,1); }
+  updateStats();
+  renderNamoz();
+}
+function updateCD(){
+  const ni=getNextPrayer(), p=prayers[ni];
+  const n=new Date(), t=new Date();
+  t.setHours(p.h,p.m,0,0);
+  if(t<=n) t.setDate(t.getDate()+1);
+  const d=t-n, h=Math.floor(d/3600000), m=Math.floor((d%3600000)/60000), s=Math.floor((d%60000)/1000);
+  const el=document.getElementById('cd-time'), lb=document.getElementById('cd-lbl');
+  if(el) el.textContent=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+  if(lb) lb.textContent=prayers[ni].name+' namozigacha';
+}
+renderNamoz(); updateCD();
+setInterval(()=>{renderNamoz();updateCD();updateStats();},1000);
+
+// ===== VAZIFALAR =====
+const catColors={ma'naviyat:'bp',ilm:'bp',biznes:'bc',sport:'bt',moliya:'ba',oila:'bb'};
+const catEmoji={ma'naviyat:'🕌',ilm:'🧠',biznes:'💼',sport:'🏋️',moliya:'💰',oila:'👨‍👩‍👧'};
+function fmt(sec){const m=Math.floor(sec/60),s=sec%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function fmtMin(sec){if(sec<60)return sec+'s';const m=Math.floor(sec/60);return m+'daq';}
+
+function renderVazifalar(){
+  const el=document.getElementById('vazifa-list');
+  if(!el) return;
+  const done=S.tasks.filter(t=>t.done).length;
+  const el2=document.getElementById('d-tasks');
+  if(el2) el2.textContent=done+'/'+S.tasks.length;
+  el.innerHTML=S.tasks.map(t=>{
+    const pct=t.min>0?Math.min(100,Math.round(t.elapsed/60/t.min*100)):0;
+    const isActive=S.activeTask===t.id;
+    return `<div class="task-row" id="trow-${t.id}" style="${t.done?'opacity:.6':''}${isActive?';background:var(--pur-l);border-radius:var(--rs);padding:8px;margin:2px 0':''}">
+      <div class="chk ${t.done?'done':''}" onclick="toggleVazifa(${t.id})">${t.done?'✓':''}</div>
+      <div class="task-info">
+        <div class="task-name ${t.done?'done':''}">${catEmoji[t.cat]||'•'} ${t.name}</div>
+        <div class="task-meta">
+          <span class="badge ${catColors[t.cat]||'bp'}">${t.cat}</span>
+          <span>${t.min} daqiqa</span>
+          ${t.elapsed>0?`<span style="color:var(--pur)">⏱ ${fmtMin(t.elapsed)} sarflandi</span>`:''}
+        </div>
+        ${t.min>0?`<div class="prog-bar" style="margin-top:5px;height:3px"><div class="prog-fill" style="width:${pct}%;background:var(--pur)"></div></div>`:''}
+        ${!t.done?`<div class="task-timer-row">
+          <button class="btn ${isActive?'btn-r':'btn-p'}" style="font-size:11px;padding:4px 9px" onclick="selectTask(${t.id})">${isActive?'Aktiv ✓':'▶ Tanlash'}</button>
+          <span class="t-disp" id="tdisp-${t.id}">${fmt(t.elapsed)}</span>
+        </div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function selectTask(id){
+  if(S.activeTask===id) return;
+  if(S.activeInterval){clearInterval(S.activeInterval);S.activeInterval=null;}
+  const prev=S.tasks.find(t=>t.id===S.activeTask);
+  if(prev) prev.running=false;
+  S.activeTask=id;
+  const task=S.tasks.find(t=>t.id===id);
+  const el=document.getElementById('active-task-name');
+  const et=document.getElementById('active-timer-target');
+  if(el) el.textContent=task.name;
+  if(et) et.textContent='Maqsad: '+task.min+' daqiqa';
+  document.getElementById('vbtn-start').disabled=false;
+  document.getElementById('vbtn-pause').disabled=true;
+  document.getElementById('vbtn-done').disabled=false;
+  renderVazifalar();
+}
+
+function activeTaskStart(){
+  const task=S.tasks.find(t=>t.id===S.activeTask);
+  if(!task||task.done) return;
+  task.running=true;
+  document.getElementById('vbtn-start').disabled=true;
+  document.getElementById('vbtn-pause').disabled=false;
+  document.getElementById('vbtn-done').disabled=false;
+  S.activeInterval=setInterval(()=>{
+    task.elapsed++;
+    const el=document.getElementById('active-timer');
+    if(el) el.textContent=fmt(task.elapsed);
+    const el2=document.getElementById('tdisp-'+task.id);
+    if(el2) el2.textContent=fmt(task.elapsed);
+    const pct=task.min>0?Math.min(100,Math.round(task.elapsed/60/task.min*100)):0;
+    const pb=document.querySelector('#trow-'+task.id+' .prog-fill');
+    if(pb) pb.style.width=pct+'%';
+    if(!S.log[todayKey]) S.log[todayKey]={tasks:[],namoz:[],suras:[],biz:[],time:0};
+    S.log[todayKey].time=(S.log[todayKey].time||0)+1;
+    updateStats();
+  },1000);
+}
+
+function activeTaskPause(){
+  const task=S.tasks.find(t=>t.id===S.activeTask);
+  if(!task) return;
+  task.running=false;
+  clearInterval(S.activeInterval);
+  S.activeInterval=null;
+  document.getElementById('vbtn-start').disabled=false;
+  document.getElementById('vbtn-start').textContent='▶ Davom';
+  document.getElementById('vbtn-pause').disabled=true;
+}
+
+function activeTaskDone(){
+  const task=S.tasks.find(t=>t.id===S.activeTask);
+  if(!task) return;
+  clearInterval(S.activeInterval); S.activeInterval=null;
+  task.done=true; task.running=false;
+  if(!S.log[todayKey]) S.log[todayKey]={tasks:[],namoz:[],suras:[],biz:[],time:0};
+  if(!S.log[todayKey].tasks.includes(task.name)) S.log[todayKey].tasks.push(task.name);
+  S.activeTask=null;
+  document.getElementById('active-task-name').textContent='Vazifa tanlanmagan';
+  document.getElementById('active-timer').textContent='00:00';
+  document.getElementById('vbtn-start').textContent='▶ Boshlash';
+  document.getElementById('vbtn-start').disabled=false;
+  document.getElementById('vbtn-pause').disabled=true;
+  document.getElementById('vbtn-done').disabled=true;
+  updateStats();
+  renderVazifalar();
+  renderDashTasksList();
+}
+
+function toggleVazifa(id){
+  const task=S.tasks.find(t=>t.id===id);
+  if(!task) return;
+  task.done=!task.done;
+  if(task.done){
+    if(!S.log[todayKey]) S.log[todayKey]={tasks:[],namoz:[],suras:[],biz:[],time:0};
+    if(!S.log[todayKey].tasks.includes(task.name)) S.log[todayKey].tasks.push(task.name);
+  }
+  updateStats();
+  renderVazifalar();
+  renderDashTasksList();
+}
+
+function addVazifa(){
+  const name=document.getElementById('new-task-name').value.trim();
+  const min=parseInt(document.getElementById('new-task-min').value)||30;
+  const cat=document.getElementById('new-task-cat').value;
+  if(!name) return;
+  const newId=Math.max(...S.tasks.map(t=>t.id),0)+1;
+  S.tasks.push({id:newId,name,min,cat,done:false,elapsed:0,running:false});
+  document.getElementById('new-task-name').value='';
+  document.getElementById('new-task-min').value='';
+  renderVazifalar();
+}
+
+function renderDashTasksList(){
+  const el=document.getElementById('dash-tasks-list');
+  if(!el) return;
+  el.innerHTML=S.tasks.slice(0,5).map(t=>`<div class="task-row">
+    <div class="chk ${t.done?'done':''}" onclick="toggleVazifa(${t.id})">${t.done?'✓':''}</div>
+    <div class="task-info">
+      <div class="task-name ${t.done?'done':''}">${catEmoji[t.cat]||'•'} ${t.name}</div>
+      <div class="task-meta"><span class="badge ${catColors[t.cat]||'bp'}">${t.cat}</span><span>${t.min} daqiqa</span></div>
+    </div>
+  </div>`).join('');
+}
+
+function renderDashboard(){
+  renderDashTasksList();
+  updateStats();
+}
+renderDashTasksList();
+
+// ===== AREAS =====
+const areaMap={i:{p:'pi',b:'bi'},b:{p:'pb',b:'bb2'},j:{p:'pj',b:'bj'},r:{p:'pr',b:'br'},m:{p:'pm',b:'bm'},mu:{p:'pmu',b:'bmu'}};
+function upArea(k){
+  S.areas[k]=Math.min(100,S.areas[k]+5);
+  const am=areaMap[k];
+  if(am){
+    const pe=document.getElementById(am.p), be=document.getElementById(am.b);
+    if(pe) pe.textContent=S.areas[k]+'%';
+    if(be) be.style.width=S.areas[k]+'%';
+  }
+  const avg=Math.round(Object.values(S.areas).reduce((a,b)=>a+b)/6);
+  const el=document.getElementById('d-bal'); if(el) el.textContent=avg+'%';
+}
+
+// ===== SURALAR =====
+const suras={
+  boshlang:[
+    {name:"Al-Fotiha",num:"1-sura • 7 oyat",level:"Har namozda farz",badge:"bp",
+     arabic:"بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ\nالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ\nالرَّحْمَٰنِ الرَّحِيمِ\nمَالِكِ يَوْمِ الدِّينِ\nإِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ\nاهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ\nصِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+     latin:"Bismillahir rohmanir rohiym.\nAlhamdulillahi robbil 'aloomiyn.\nAr-rohmanir rohiym.\nMaliki yawmid diyn.\nIyyaka na'budu wa iyyaka nasta'iyn.\nIhdinas sirotal mustaqiym.\nSirotal ladhiyna an'amta 'alayhim, ghayril maghdubi 'alayhim wa lad-dolliyn.",
+     trans:"Rahmli va mehribon Alloh nomi bilan. Hamd — olamlar Rabbisi Allohga. Rahmli va mehribon. Din kunining Egasi. Faqat Seni ibodat qilamiz, faqat Sendan yordam so'raymiz. Bizni to'g'ri yo'lga hidoyat et. O'zlariga ne'mat berganlarning yo'liga — g'azabga uchraganlar va adashganlarning yo'liga emas."},
+    {name:"Al-Ixlos",num:"112-sura • 4 oyat",level:"Hafizda bo'lsin — shart",badge:"bp",
+     arabic:"قُلْ هُوَ اللَّهُ أَحَدٌ\nاللَّهُ الصَّمَدُ\nلَمْ يَلِدْ وَلَمْ يُولَدْ\nوَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ",
+     latin:"Qul huwa Allahu ahad.\nAllahus-somad.\nLam yalid wa lam yuulad.\nWa lam yakul-lahu kufuwan ahad.",
+     trans:"Ayting: U — Alloh, Yakkadur. Alloh — Samaddur. U tug'magan va tug'ilmagan. Va Unga hech kim teng bo'lmagan. (1 marta o'qish = Qur'onning 1/3 savobiga teng)"},
+    {name:"Al-Falaq",num:"113-sura • 5 oyat",level:"Har kech o'qiladi",badge:"bt",
+     arabic:"قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ\nمِن شَرِّ مَا خَلَقَ\nوَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ\nوَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ\nوَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ",
+     latin:"Qul a'udhu bi robbil falaq.\nMin sharri ma xolaq.\nWa min sharri ghosiqin idha waqob.\nWa min sharrin naffasati fil 'uqod.\nWa min sharri hosidin idha hasad.",
+     trans:"Ayting: Tong Rabbiga suyunaman. U yaratgan narsalar yomonligidan. Qorong'ilik qoplagan tundan. Tugunlarga puflaydiganlardan. Hasad qilganda hasadgoydan."},
+    {name:"An-Nas",num:"114-sura • 6 oyat",level:"Har kech o'qiladi",badge:"bt",
+     arabic:"قُلْ أَعُوذُ بِرَبِّ النَّاسِ\nمَلِكِ النَّاسِ\nإِلَٰهِ النَّاسِ\nمِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ\nالَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ\nمِنَ الْجِنَّةِ وَالنَّاسِ",
+     latin:"Qul a'udhu bi robbin-nas.\nMalikin-nas.\nIlahin-nas.\nMin sharril waswasil xannas.\nAlladhi yuwaswisu fi sudurin-nas.\nMinal jinnati wan-nas.",
+     trans:"Ayting: Odamlar Rabbiga suyunaman. Odamlar Podshohiga. Odamlar Ilohiga. Vasvasa solib yashirinadigan narsadan. U odamlar ko'kragiga vasvasa soladi — jinlar va odamlardan."},
+    {name:"Al-Kafirun",num:"109-sura • 6 oyat",level:"Bomdod sunnatida",badge:"bc",
+     arabic:"قُلْ يَا أَيُّهَا الْكَافِرُونَ\nلَا أَعْبُدُ مَا تَعْبُدُونَ\nوَلَا أَنتُمْ عَابِدُونَ مَا أَعْبُدُ\nوَلَا أَنَا عَابِدٌ مَّا عَبَدتُّمْ\nوَلَا أَنتُمْ عَابِدُونَ مَا أَعْبُدُ\nلَكُمْ دِينُكُمْ وَلِيَ دِينِ",
+     latin:"Qul ya ayyuhal kafiruun.\nLa a'budu ma ta'buduun.\nWa la antum 'abiduuna ma a'bud.\nWa la ana 'abidun ma 'abattum.\nWa la antum 'abiduuna ma a'bud.\nLakum dinukum wa liya diin.",
+     trans:"Ayting: Ey kofirlari! Men sizlar ibodat qilayotgan narsaga ibodat qilmasman. Siz ham men ibodat qilayotganga ibodat qilmassizlar. Diningiz sizga, dinim menga."},
+    {name:"Oyat ul-Kursiy",num:"2:255 • 1 oyat",level:"Har namozdan keyin",badge:"bp",
+     arabic:"اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ",
+     latin:"Allahu la ilaha illa huwal hayyul qayyuum. La ta'khudhuhuu sinatuw-wa la nawm. Lahuu maa fis-samaawaati wa maa fil-ard.",
+     trans:"Alloh — Undan o'zga iloh yo'q. Tirik, Qayyum. Uni na mudroq, na uyqu tutadi. Osmonlardagi va yerdagi narsalar Uniki. (Eng buyuk oyat — har namozdan keyin o'qing)"}
+  ],
+  orta:[
+    {name:"Al-Mulk — 1-5 oyat",num:"67:1-5",level:"Har kecha — 5 oyatdan",badge:"ba",
+     arabic:"تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ\nالَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا",
+     latin:"Tabaarakallathii biyadihil mulku wa huwa 'alaa kulli shay'in qadiir.\nAlladhii khalaqal mawta wal hayaata liyabluwakum ayyukum ahsanu 'amalaa.",
+     trans:"Ulug'dir U Zot — qo'lida mulk bor va U hamma narsaga Qodirdir. U o'lim va hayotni yaratdi — qaysi biri yaxshiroq amal qilishini sinash uchun.\n\n📌 Yodlash rejasi: Kuniga 5 oyat. 6 kunda to'liq 30 oyat yodlanadi."},
+    {name:"Al-Mulk — 6-15 oyat",num:"67:6-15",level:"2–3-kun",badge:"ba",
+     arabic:"وَلِلَّذِينَ كَفَرُوا بِرَبِّهِمْ عَذَابُ جَهَنَّمَ وَبِئْسَ الْمَصِيرُ",
+     latin:"Wa lilladhiina kafaruu bi rabbihim 'adhabu jahannam, wa bi'sal masiir.",
+     trans:"Robblariga kofir bo'lganlarga jahannam azob bor — naqadar yomon qaytish joyi.\n\nDavom ettirib yodlang — har kuni 5 oyat."},
+    {name:"Yasin — 1-12 oyat",num:"36:1-12",level:"Juma ertalab",badge:"bp",
+     arabic:"يس وَالْقُرْآنِ الْحَكِيمِ إِنَّكَ لَمِنَ الْمُرْسَلِينَ عَلَىٰ صِرَاطٍ مُّسْتَقِيمٍ",
+     latin:"Yaasiin. Wal-qur'aanil hakiim. Innaka laminal mursaliin. 'Alaa siraatim mustaqiim.",
+     trans:"Yasin. Hikmatli Qur'onga qasamki. Albatta, sen — payg'ambarlardan birisar. To'g'ri yo'ldasan.\n\n📌 Yasin 4 qismga bo'lingan: 1-12 (Kirish), 13-36 (Qissa), 37-58 (Belgilar), 59-83 (Hukm)"}
+  ],
+  uzun:[
+    {name:"Baqara 285-286",num:"2:285-286",level:"Har kecha muhofaza",badge:"bp",
+     arabic:"آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ وَالْمُؤْمِنُونَ",
+     latin:"Aamanar-rasuulu bimaa unzila ilayhi mir-rabbihii wal mu'minuun...",
+     trans:"(285-oyat boshi) Rasul Robbidan nozil qilingan narsaga imon keltirdi...\n\n✅ 285-oyatni avval yodlang, keyin 286-oyatni.\n💡 Kim kechqurun o'qisa, ertalabgacha muhofaza qilinadi."},
+    {name:"Baqara 1-5 (boshlash)",num:"2:1-5",level:"Kuniga 3-5 oyat",badge:"ba",
+     arabic:"الم ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى لِّلْمُتَّقِينَ",
+     latin:"Alif laam miim. Dhalikal kitaabu laa rayba fiih, hudal lil muttaqiin.",
+     trans:"Alif, Lom, Mim. O'sha Kitob — unda shak yo'q, taqvodorlar uchun yo'l-yo'riqdir.\n\n📌 Baqara 286 oyat. Kuniga 5 oyat = 57 kun. Eng savobli sura — uydan shaytonni quvadi."}
+  ]
+};
+
+function showSuras(type, el){
+  if(el){document.querySelectorAll('#sura-stabs .stab').forEach(b=>b.classList.remove('active'));el.classList.add('active');}
+  const list=document.getElementById('sura-list');
+  if(!list) return;
+  const arr=suras[type]||[];
+  list.innerHTML=arr.map((s,i)=>{
+    const key='sura-'+type+'-'+i, done=S.surasDone.includes(key);
+    return `<div class="sura-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start" onclick="toggleSuraBody('${type}',${i})">
+        <div>
+          <div style="font-size:13px;font-weight:500;color:var(--tx)">${done?'✅ ':''} ${s.name} <span style="font-size:10px;color:var(--tx3)">${s.num}</span></div>
+          <div style="margin-top:2px"><span class="badge ${s.badge}">${s.level}</span></div>
+        </div>
+        <span id="si-${type}-${i}" style="font-size:18px;color:var(--tx3)">+</span>
+      </div>
+      <div class="sura-body" id="sb-${type}-${i}">
+        <div class="sura-arabic">${s.arabic.replace(/\n/g,'<br>')}</div>
+        <div style="margin-bottom:6px;font-size:11px;font-weight:500;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px">Lotin yozuvi:</div>
+        <div class="sura-latin">${s.latin.replace(/\n/g,'<br>')}</div>
+        <div style="margin-bottom:4px;font-size:11px;font-weight:500;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px">O'zbek tarjimasi:</div>
+        <div class="sura-trans" style="white-space:pre-line">${s.trans}</div>
+        <button class="btn ${done?'btn-g':'btn-p'}" style="width:100%;margin-top:10px;font-size:12px" onclick="markSuraDone('${type}',${i},'${key}')">
+          ${done?'✓ Yodlandim (bekor qilish)':'Yodladim ✓'}
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleSuraBody(t,i){
+  const b=document.getElementById('sb-'+t+'-'+i), ic=document.getElementById('si-'+t+'-'+i);
+  if(!b) return;
+  b.classList.toggle('open');
+  ic.textContent=b.classList.contains('open')?'−':'+';
+}
+function markSuraDone(t,i,key){
+  const idx=S.surasDone.indexOf(key);
+  if(idx>-1) S.surasDone.splice(idx,1);
+  else {
+    S.surasDone.push(key);
+    if(!S.log[todayKey]) S.log[todayKey]={tasks:[],namoz:[],suras:[],biz:[],time:0};
+    const sName=suras[t][i].name;
+    if(!S.log[todayKey].suras.includes(sName)) S.log[todayKey].suras.push(sName);
+  }
+  updateStats();
+  showSuras(t,null);
+}
+showSuras('boshlang',null);
+
+// ===== KITOBLAR =====
+const books={
+  biznes:[
+    {title:"Zero to One",author:"Peter Thiel",badge:"bc",desc:"Noldan monopoliya qurish falsafasi. Startaplar haqidagi eng yaxshi kitob.",chunk:"Kuniga 15-20 bet = 1 hafta",pct:0,
+     summary:"Asosiy fikrlar:\n1. Raqobat — mag'lubiyat, monopoliya — g'alaba.\n2. Hech kim bilmagan siringiz bormi? Shu — startap g'oyasi.\n3. Kelajakni rejalashtirib qurilgan kompaniyalar yutadi.",
+     link:"https://t.me/kitobxon_rasmiy"},
+    {title:"The $100 Startup",author:"Chris Guillebeau",badge:"bt",desc:"$100 bilan 50 ta real biznes muvaffaqiyat misollari.",chunk:"Kuniga 20 bet = 10 kun",pct:15,
+     summary:"Asosiy fikrlar:\n1. Katta kapital kerak emas — kichik boshla.\n2. Sevgan narsangizni pul topish vositasiga aylantirvring.\n3. Minimal MVP sinov — keyin kengaytir.",
+     link:"https://t.me/kitobxon_rasmiy"},
+    {title:"Rich Dad Poor Dad",author:"Robert Kiyosaki",badge:"ba",desc:"Pul va aktivlar haqidagi tafakkur inqilobi.",chunk:"Kuniga 25 bet = 8 kun",pct:30,
+     summary:"Asosiy fikrlar:\n1. Aktivlar pul keltiradi, passivlar pul oladi.\n2. Boylar aktiv sotib oladi — ish emas.\n3. Moliyaviy savodxonlik — eng muhim ta'lim.",
+     link:"https://t.me/kitobxon_rasmiy"},
+    {title:"The Lean Startup",author:"Eric Ries",badge:"bp",desc:"Tez sinash va xatoliklardan o'rganish metodi.",chunk:"Kuniga 20 bet = 10 kun",pct:0,
+     summary:"Asosiy fikrlar:\n1. Build-Measure-Learn sikli.\n2. MVP — minimal mahsulot bilan bozorni sinash.\n3. Pivot — xatoni tan olib yo'l o'zgartirish.",
+     link:"https://t.me/kitobxon_rasmiy"}
+  ],
+  shaxsiy:[
+    {title:"Atomic Habits",author:"James Clear",badge:"bp",desc:"Kichik odatlar — ulkan natijalarga yo'l. Ilmiy asosda.",chunk:"Kuniga 20 bet = 12 kun",pct:29,
+     summary:"Asosiy fikrlar:\n1. 1% yaxshilik = yilda 37x o'sish.\n2. Odat sikli: Ishora → Istak → Javob → Mukofot.\n3. Identifikatsiya: 'Men sportchi' deb ayting.",
+     link:"https://t.me/kitobxon_rasmiy"},
+    {title:"The 7 Habits",author:"Stephen Covey",badge:"bt",desc:"Samarali odamlarning 7 ta odati — klassik.",chunk:"Kuniga 15 bet = 17 kun",pct:0,
+     summary:"7 ta odat:\n1. Proaktiv bo'l\n2. Oxirdan boshlang\n3. Muhimni birinchi qo'y\n4. Win-win o'yla\n5. Avval tushunishga harakat qil\n6. Sinergi\n7. Arrani charxla",
+     link:"https://t.me/kitobxon_rasmiy"},
+    {title:"Can't Hurt Me",author:"David Goggins",badge:"bc",desc:"Ruhiy quvvat va intizomni oshirish.",chunk:"Kuniga 20 bet = 15 kun",pct:0,
+     summary:"Asosiy fikrlar:\n1. Og'riq — o'sishning belgisi.\n2. 40% qoidasi: charchagan vaqtda ham 60% rezerv bor.\n3. Cookie jar: o'tgan g'alabalarni eslab kuch ol.",
+     link:"https://t.me/kitobxon_rasmiy"},
+    {title:"Think and Grow Rich",author:"Napoleon Hill",badge:"ba",desc:"500 ta millioner sirlari yig'ilgan klassik.",chunk:"Kuniga 15 bet = 14 kun",pct:0,
+     summary:"13 ta tamoyil:\n1. Istak (burning desire)\n2. Ishonch (faith)\n3. Avtosuggestiya\n4. Ixtisoslashgan bilim\n5. Tasavvur (imagination)",
+     link:"https://t.me/kitobxon_rasmiy"}
+  ],
+  manav:[
+    {title:"Ihyou Ulumiddin",author:"Imom G'azzoliy",badge:"bp",desc:"Din ilmlarini jonlantirish — eng buyuk asarlardan.",chunk:"Kuniga 10 bet, boblab",pct:10,
+     summary:"4 qism:\n1. Ibodat ilmi (tahоrat, namoz, zakat)\n2. Odob va axloq ilmi\n3. Halok qiluvchi sifatlar\n4. Najot beruvchi sifatlar",
+     link:"https://t.me/islomiy_kutubxona"},
+    {title:"Riyodus-Solixin",author:"Imom Navaviy",badge:"bt",desc:"Hadislar to'plami — kundalik hayot uchun.",chunk:"Kuniga 2-3 hadis",pct:5,
+     summary:"Tarkib:\n1. Niyat va ikhlos haqida hadislar\n2. Taqvo va poklik\n3. Sabr va shukr\n4. Haqiqat va to'g'rilik\n5. Oila va munosabatlar",
+     link:"https://t.me/islomiy_kutubxona"},
+    {title:"Hayot Ma'nosi",author:"Hasan Mamasaidov",badge:"ba",desc:"Zamonaviy tafakkur + islomiy qadriyatlar.",chunk:"Kuniga 15 bet = 1 hafta",pct:40,
+     summary:"Asosiy mavzular:\n1. Hayotning maqsadi\n2. O'zlikni anglash\n3. Moliyaviy va ma'naviy boylik\n4. Munosabatlar va oila\n5. Yetuk inson qanday bo'ladi",
+     link:"https://t.me/kitobxon_rasmiy"},
+    {title:"Risolai Qushayriya",author:"Imom Qushayriy",badge:"bc",desc:"Tasavvuf va ma'naviy o'sish haqida klassik.",chunk:"Kuniga 10 bet",pct:0,
+     summary:"Asosiy tushunchalar:\n1. Tawba — qaytish\n2. Wara' — ehtiyotkorlik\n3. Zuhd — dunyodan yuz o'girish\n4. Sabr — chidamlilik\n5. Tavakkul — Allohga tayanish",
+     link:"https://t.me/islomiy_kutubxona"}
+  ]
+};
+
+function showBooks(type,el){
+  if(el){document.querySelectorAll('#kitob-stabs .stab').forEach(b=>b.classList.remove('active'));el.classList.add('active');}
+  const list=document.getElementById('book-list');
+  if(!list) return;
+  const arr=books[type]||[];
+  list.innerHTML=arr.map((b,i)=>{
+    const key='book-'+type+'-'+i;
+    const pages=S.bookPages[key]||0;
+    return `<div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+        <div><div style="font-size:15px;font-weight:500;color:var(--tx);font-family:var(--fd)">${b.title}</div><div style="font-size:11px;color:var(--tx3)">${b.author}</div></div>
+        <span class="badge ${b.badge}" style="flex-shrink:0;margin-top:2px">${b.badge==='bp'?'Muhim':b.badge==='bt'?'Tavsiya':b.badge==='ba'?'Asosiy':'Qo\'shimcha'}</span>
+      </div>
+      <div style="font-size:12px;color:var(--tx2);margin-bottom:8px">${b.desc}</div>
+      <div class="detail-box" style="margin-bottom:8px">${b.summary.replace(/\n/g,'<br>')}</div>
+      <div class="prog-wrap">
+        <div class="prog-label"><span>O'qish jarayoni</span><span id="bpct-${key}">${b.pct}%</span></div>
+        <div class="prog-bar"><div class="prog-fill" id="bpbar-${key}" style="width:${b.pct}%;background:var(--pur)"></div></div>
+      </div>
+      <div class="day-chunk" style="background:var(--bg2);border-radius:var(--rs);padding:8px 10px;font-size:12px;color:var(--tx2);margin-bottom:8px">
+        <span style="font-size:10px;color:var(--tx3);display:block;margin-bottom:2px">Kunlik qism:</span>${b.chunk}
+      </div>
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+        <input type="number" id="pages-${key}" placeholder="sahifa" style="width:70px;font-size:12px" value="${pages}">
+        <button class="btn btn-p" style="font-size:11px;padding:5px 9px" onclick="updateBookProgress('${key}','${type}',${i})">Sahifa yangilash</button>
+        <a href="${b.link}" target="_blank" style="text-decoration:none"><button class="btn" style="font-size:11px;padding:5px 9px">📥 PDF</button></a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function updateBookProgress(key,type,i){
+  const inp=document.getElementById('pages-'+key);
+  const pages=parseInt(inp.value)||0;
+  S.bookPages[key]=pages;
+  const b=books[type][i];
+  const totalPages=b.title==='Rich Dad Poor Dad'?207:b.title==='Zero to One'?195:b.title==='Atomic Habits'?319:b.title==='The $100 Startup'?268:250;
+  const pct=Math.min(100,Math.round(pages/totalPages*100));
+  const pbar=document.getElementById('bpbar-'+key), ppct=document.getElementById('bpct-'+key);
+  if(pbar) pbar.style.width=pct+'%';
+  if(ppct) ppct.textContent=pct+'%';
+  if(!S.log[todayKey]) S.log[todayKey]={tasks:[],namoz:[],suras:[],biz:[],time:0};
+  if(!S.log[todayKey].books) S.log[todayKey].books=[];
+  const bookEntry=b.title+' ('+pages+" sahifa)";
+  S.log[todayKey].books=[bookEntry];
+  updateStats();
+}
+showBooks('biznes',null);
+
+// ===== BIZNES =====
+const bizData={
+  asos:[
+    {title:"Biznes g'oyani qanday topaman?",sub:"Eng muhim birinchi qadam",
+     detail:"1. O'zingiz yechim topa olmagan muammoni toping.\n2. Odamlar nima uchun pul to'laydi? Vaqt, pul, og'riq, istakni qondirish.\n3. 10 ta g'oya yozing, eng yaxshi 3 tasini sinang.\n4. 'Minimal viable product' — eng oddiy versiyani quring.\n5. 10 ta odamga ko'rsating va javob oling.",
+     badge:"bp"},
+    {title:"Bozor hajmini qanday o'lchayman?",sub:"TAM, SAM, SOM modeli",
+     detail:"TAM = Umumiy bozor hajmi (barcha potensial mijozlar)\nSAM = Sizga mos segment\nSOM = Haqiqatda erishish mumkin bo'lgan qism\n\nMisol: Toshkentda onlayn ta'lim\nTAM = 500,000 o'quvchi\nSAM = 50,000 (yoshlar 15-30)\nSOM = 1,000 (birinchi yil maqsad)",
+     badge:"bt"},
+    {title:"Raqobatchilarni qanday tahlil qilaman?",sub:"Raqib profili",
+     detail:"1. Eng yaxshi 5 raqibni aniqlang\n2. Har biri uchun: narx, sifat, mijoz bazi, kuchli/zaif tomonlar\n3. Bozordagi bo'shliqni toping — ular qilmayotgan nima bor?\n4. Porter 5 kuchlari modeli qo'llang\n5. Siz nimada farqli bo'lasiz? Nima uchun sizni tanlashadi?",
+     badge:"bt"},
+    {title:"MVP (Minimal Yetarli Mahsulot) nima?",sub:"Tez-tez sinash",
+     detail:"MVP = Eng oz xarajat bilan bozorni sinash.\n\nMisol: Uber MVP = Sadece SMS bilan taksi chaqirish\nAirBnB MVP = Oddiy sayt, 3 ta xona ijarasi\n\nSizning MVP:\n1. Eng asosiy 1 muammoni hal qiling\n2. 1 hafta ichida quring\n3. 10 ta mijozga bepul bering\n4. Fikrlarni yig'ing\n5. Yaxshilang yoki yo'nalish o'zgartiring",
+     badge:"ba"},
+    {title:"Dastlabki mijozlarni qanday topaman?",sub:"First customers strategy",
+     detail:"1. Do'stlar va oila — avval ularga ayt\n2. Telegram guruhlari — 5-10 ta relevant guruhga yozing\n3. LinkedIn — professional tarmoq\n4. Ko'cha ta'rifi — Toshkentda hali ishlaydi!\n5. Bepul sinov taklif qiling\n6. Bitta mijozdan 3 ta referral so'rang\n\nEslab qoling: 1-10 ta mijoz — qo'lda topiladi, 11-100 ta — marketing bilan.",
+     badge:"bc"},
+    {title:"Biznes modelini qanday tanlayman?",sub:"9 ta asosiy model",
+     detail:"1. Mahsulot sotish (to'g'ridan-to'g'ri)\n2. Xizmat ko'rsatish (konsultatsiya, ta'mir)\n3. Obuna modeli (oylik to'lov)\n4. Freemium (bepul + premium)\n5. Platform modeli (Uzum kabi)\n6. Franshayz\n7. Litsenziya\n8. Reklama modeli\n9. Komisyon (makler kabi)\n\nEng oddiy: Xizmat → Mahsulot → Platform",
+     badge:"bp"},
+  ],
+  tahlil:[
+    {title:"SWOT tahlili qanday o'tkaziladi?",sub:"Kompaniya strategiyasi",
+     detail:"S — Strength (Kuchli tomonlar): nima yaxshi?\nW — Weakness (Zaif tomonlar): nima yomon?\nO — Opportunity (Imkoniyatlar): bozorda nima bor?\nT — Threat (Tahdidlar): nima xavf?\n\nMisol (Toshkent kafe):\nS: Ajoyib joylashuv, yaxshi oshpaz\nW: Kichik kapital, brendsizlik\nO: Instagram va delivery o'sishi\nT: Yirik zanjir kafelar",
+     badge:"bp"},
+    {title:"Moliyaviy hisobot o'qish asoslari",sub:"P&L, Balans, Cash Flow",
+     detail:"3 asosiy hisobot:\n1. P&L (Daromad-zarar): Kirim - Xarajat = Foyda\n2. Balans varaqasi: Aktivlar = Majburiyatlar + Kapital\n3. Pul oqimi: Qancha naqd pul bor?\n\nEng muhim ko'rsatkich — pul oqimi.\nFoyda bo'lsa ham, pul bo'lmasa — bankrot.",
+     badge:"bt"},
+    {title:"Uzum — O'zbekiston e-commerce lideriga tahlil",sub:"Real keis",
+     detail:"SWOT:\nS: Birinchi harakat ustunligi, katta baza, brend\nW: Logistika muammolari, sifat nazorati\nO: O'zbekiston e-commerce 10% dan past — katta o'sish\nT: Wildberries, Amazon kirib kelishi\n\nDarslar:\n1. Lokal bozorni chuqur tush\n2. Tez o'sish uchun kapital jalb qil\n3. Logistika — e-commercening yuragi",
+     badge:"ba"},
+    {title:"Payme va Click — raqamli to'lov tahlili",sub:"FinTech keis",
+     detail:"Ikkalasi ham bir xil bozorda raqobatlashadi.\n\nPayme:\n+ Sodda interfeys, yosh auditoriya\n- Bank integratsiyasi cheklangan\n\nClick:\n+ Bank bilan integratsiya kuchli\n- Interfeys eskirgan\n\nDarslar:\n1. Interfeys — foydalanuvchi saqlab qoladi\n2. B2B integratsiya — turg'un kirim\n3. O'zbekistonda raqamli to'lov hali kichik — imkoniyat katta",
+     badge:"bt"},
+  ],
+  kompaniya:[
+    {title:"Apple — Steve Jobs darslari",sub:"Innovatsiya va dizayn falsafasi",
+     detail:"5 ta asosiy dars:\n1. 'Think Different' — hammadan farqli bo'l\n2. Detal muhim — har bir pixel, har bir detalga e'tibor\n3. Soddalik — murakab narsani sodda qil\n4. 'No' deyish san'ati — 1000 ta g'oyadan 1 tasini tanlash\n5. Ecosystem — mahsulotlar bir-birini kuchaytirsin\n\nJobs: 'Iste'molchilar nimani xohlashini bilmaydi — buni biz ko'rsatamiz.'",
+     badge:"bp"},
+    {title:"Amazon — Jeff Bezos Customer Obsession",sub:"Mijozga obsessiya",
+     detail:"Amazon 14 ta tamoyili:\n1. Customer Obsession — birinchi navbatda mijoz\n2. Ownership — o'z ishingga egalik qil\n3. Invent and Simplify — ixtiro va soddalashtir\n4. Are Right, A Lot — to'g'ri qarorlar\n5. Learn and Be Curious — doim o'rgan\n\nBezos: 'Raqiblaringizni emas, mijozlaringizni kuzating.'",
+     badge:"bt"},
+    {title:"Tesla — Elon Musk risk falsafasi",sub:"First principles thinking",
+     detail:"Musk metodi:\n1. First Principles — hamma narsani eng asosiy elementlarga bo'l\n2. Asoslardan qayta qur — 'Batareya qimmat, chunki shunday' emas, nima uchun qimmat?\n3. 80-20 qoidasi — 20% harakat 80% natija\n4. Failure is data — xato = ma'lumot\n5. Moonshot goals — imkonsiz ko'rinadigan maqsad qo'y\n\n'Insoniyat uchun foydali bo'l — pul o'zi keladi.'",
+     badge:"ba"},
+    {title:"Alibaba — Jack Ma noldan milliarder",sub:"O'zbekistonlik tadbirkor uchun darslar",
+     detail:"Jack Ma tarixi:\n- Harvard 10 marta rad qildi\n- Politsiyaga ham olmadi\n- 35 yoshida internet tadbirkorlik boshladi\n\n5 dars:\n1. Insonlarga hizmat qil — pul o'zi keladi\n2. Raqiblaringni o'rgan, lekin ulardan qo'rqma\n3. Kichik va o'rta biznesni yoqla — ular sening mijozlaring\n4. 'Today is hard, tomorrow harder, day after tomorrow wonderful'\n5. Jamoa — bitta dahoning yuz nafar o'rtacha odamdan ustunligi yo'q",
+     badge:"bc"},
+  ],
+  marketing:[
+    {title:"Social media marketing asoslari",sub:"Toshkent bozori uchun",
+     detail:"O'zbekistonda eng samarali platformalar:\n1. Instagram — vizual mahsulotlar, 18-35 yosh\n2. Telegram — kontent, yangiliklar, obuna\n3. YouTube — ta'lim, entertainment\n4. TikTok — yoshlar, viral kontent\n\nHar kuni minimal:\n• 1 ta Instagram post\n• 2 ta Stories\n• 1 ta Telegram xabar\n\nMuhim: Sifat > Miqdor.",
+     badge:"bp"},
+    {title:"Telegram kanali orqali savdo",sub:"O'zbekistondagi eng kuchli kanal",
+     detail:"Bosqichlar:\n1. Nicha aniqlang (kiyim, ta'lim, ovqat...)\n2. Kanal oching, professional dizayn\n3. Bepul foyda beruvchi kontent — 80%\n4. Sotish kontenti — 20%\n5. Invite link tarqating\n6. 1000 obunachidan keyin reklama\n\nFormula: 3 ta foydali post → 1 ta sotish posti\n\nKanallar uchun: @telemetr.me statistikasi ko'ring",
+     badge:"bt"},
+    {title:"Narx belgilash strategiyasi",sub:"Qancha narx qo'yaman?",
+     detail:"3 ta asosiy metod:\n1. Cost-plus: Xarajat + Marja (eng oddiy)\n2. Raqib narxi: Bozor narxiga qarab\n3. Qiymat asosida: Mijoz qancha tejaydi/qancha qiymat oladi?\n\nO'zbekiston uchun maslahat:\n- Avval past narx bilan kirib, keyin oshiring\n- Bundle qiling (3 ta = 1 tadan arzon)\n- Premium versiya ham taklif qiling\n\nPsixologik narx: 99,000 so'm vs 100,000 so'm",
+     badge:"ba"},
+    {title:"Word-of-mouth marketing",sub:"Eng arzon va kuchli reklama",
+     detail:"Odamlar reklama emas, odamlarni tinglaydi.\n\nAmaliy qadamlar:\n1. Har bir mijozdan 3 ta do'stini so'rang\n2. Referral tizimi: Har bir tavsiya uchun chegirma\n3. Case study: Muvaffaqiyatli mijozni ko'rsating\n4. Ijobiy izohlarni to'plang va ulashing\n5. Hamkorlik — boshqa bizneslar bilan cross-promo\n\n'Eng yaxshi reklama — mamnun mijoz.'",
+     badge:"bc"},
+  ]
+};
+
+function showBiz(type,el){
+  if(el){document.querySelectorAll('#biz-stabs .stab').forEach(b=>b.classList.remove('active'));el.classList.add('active');}
+  const list=document.getElementById('biz-list');
+  if(!list) return;
+  const arr=bizData[type]||[];
+  list.innerHTML=arr.map((item,i)=>{
+    const key='biz-'+type+'-'+i, done=S.bizDone.includes(key);
+    return `<div class="lesson-btn ${done?'done-l':''}" id="bizcard-${key}">
+      <div class="lesson-content" onclick="toggleBizDetail('${key}')">
+        <div class="lesson-title">${done?'✅ ':''} ${item.title}</div>
+        <div class="lesson-sub">${item.sub} <span class="badge ${item.badge}" style="margin-left:4px">${item.badge==='bp'?'Muhim':item.badge==='bt'?'Amaliy':item.badge==='ba'?'O\'rta':'Kengaytirilgan'}</span></div>
+      </div>
+      <span onclick="toggleBizDetail('${key}')" style="font-size:18px;color:var(--tx3);flex-shrink:0" id="bizarr-${key}">+</span>
+    </div>
+    <div class="lesson-expand" id="bizdetail-${key}" style="background:#fff;border:.5px solid var(--bd);border-radius:var(--rs);padding:12px;margin-bottom:6px">
+      <div style="font-size:13px;color:var(--tx2);line-height:1.8;white-space:pre-line">${item.detail}</div>
+      <button class="btn ${done?'':'btn-p'}" style="width:100%;margin-top:10px;font-size:12px" onclick="markBizDone('${key}','${type}',${i},'${item.title}')">
+        ${done?'✓ O\'rganildi (bekor)':'✅ O\'rganib chiqdim'}
+      </button>
+    </div>`;
+  }).join('');
+}
+
+function toggleBizDetail(key){
+  const d=document.getElementById('bizdetail-'+key), arr=document.getElementById('bizarr-'+key);
+  if(!d) return;
+  d.classList.toggle('open');
+  arr.textContent=d.classList.contains('open')?'−':'+';
+}
+function markBizDone(key,type,i,title){
+  const idx=S.bizDone.indexOf(key);
+  if(idx>-1) S.bizDone.splice(idx,1);
+  else {
+    S.bizDone.push(key);
+    if(!S.log[todayKey]) S.log[todayKey]={tasks:[],namoz:[],suras:[],biz:[],time:0};
+    if(!S.log[todayKey].biz.includes(title)) S.log[todayKey].biz.push(title);
+  }
+  updateStats();
+  showBiz(type,null);
+}
+showBiz('asos',null);
+
+// ===== ISLOMIY ILM =====
+const ilmData=[
+  {title:"Namoz o'qishni qanday boshlash kerak?",sub:"Yangi boshlovchilar uchun",badge:"bp",
+   detail:"1-hafta: Faqat Bomdod va Peshin\n2-hafta: + Asr va Shom\n3-hafta: + Xufton (to'liq 5 vaqt)\n\nHar namoz uchun:\n1. Tahorat oling\n2. Qibla tomon qiling\n3. Niyat qiling (ichi bilan)\n4. Takbir: 'Allahu Akbar'\n5. Al-Fotiha + qisqa sura o'qing\n6. Ruku' va Sajdani to'liq bajaring\n\nDua qilishni unutmang — namozdan keyin eng ijobati vaqt."},
+  {title:"Kundalik zikrlar",sub:"Ertalab va kechqurun",badge:"bt",
+   detail:"Ertalab (Bomdoddan keyin):\n• 'SubhanAllah' — 33 marta\n• 'Alhamdulillah' — 33 marta\n• 'Allahu Akbar' — 33 marta\n• 'La ilaha illallahu wahdahu la sharika lah...' — 1 marta\n\nKechqurun (Xuftondan keyin):\n• Oyat ul-Kursiy — 1 marta\n• Ixlos, Falaq, Nas — 3 martadan\n• Istighfor: 'Astaghfirullah' — 100 marta"},
+  {title:"Ilm olishning fazilati",sub:"Hadislar va oyatlar",badge:"ba",
+   detail:"'Ilm talab qilish har bir muslimga farzdir.' — Ibn Mojah\n\n'Alloh ilm bergan odamni ko'taradi.' — Qur'on 58:11\n\n'Beshikdan qabrgacha ilm izla.' — Mashhur hadis\n\n'Kimga yaxshilik xohlasa, Alloh uni dinda faqih (chuqur bilimli) qiladi.' — Buxoriy\n\nIlm turlari:\n1. Farz ayn (har musulmon o'rganishi shart)\n2. Farz kifoya (jamiyatda ba'zilari o'rgansa kifoya)\n3. Mandub (yaxshi, lekin farz emas)"},
+  {title:"Abdulloh Domla darslari",sub:"Aqida va kundalik hayot",badge:"bp",
+   detail:"Mavzular:\n• Aqida asoslari (Allohga ishonch)\n• Namoz va ibodatning ma'nosi\n• Islomda biznes va pul masalalari (halol-harom)\n• Oila munosabatlari\n• Yoshlar uchun hayot darslari\n\nQayerdan topish:\n• YouTube: 'Abdulloh Domla' qidiring\n• Telegram: @abdulloh_domla\n• Kuniga 1 ta dars tinglang — 20-30 daqiqa"},
+  {title:"Muhammad Sodiq Muhammad Yusuf asarlari",sub:"O'zbekiston buyuk olimi",badge:"bt",
+   detail:"Asosiy kitoblar:\n• Tafsiri Hilol (to'liq Qur'on tafsiri)\n• Islomda oila\n• Hayot darslari\n• Namoz — Ma'naviy safar\n\nHar bir kitob o'zbek tilida va sodda yozilgan.\nKuniga 10-15 bet o'qing — 1 oyda 1 kitob tugaydi.\n\nTelegram: @muhammadusufy"},
+  {title:"Islomda biznes va pul masalalari",sub:"Halol va harom chegaralari",badge:"ba",
+   detail:"Halol biznes:\n✅ Savdo va xizmat ko'rsatish\n✅ Ishlab chiqarish\n✅ Ijaraga berish\n✅ Qishloq xo'jaligi\n✅ Ta'lim va konsultatsiya\n\nHarom:\n❌ Ribo (foiz asosida qarz)\n❌ Alkogol, qumar\n❌ Aldash va firib\n❌ Zararli mahsulotlar\n\nMaslahat: Savdo qilishdan oldin niyatingiz va usullaringizni ko'rib chiqing."},
+];
+
+function renderIlm(){
+  const el=document.getElementById('ilm-list');
+  if(!el) return;
+  el.innerHTML=ilmData.map((item,i)=>{
+    return `<div class="lesson-btn" id="ilmcard-${i}">
+      <div class="lesson-content" onclick="toggleIlmDetail(${i})">
+        <div class="lesson-title">${item.title}</div>
+        <div class="lesson-sub">${item.sub} <span class="badge ${item.badge}" style="margin-left:4px">${item.badge==='bp'?'Muhim':item.badge==='bt'?'Tavsiya':'O\'rta'}</span></div>
+      </div>
+      <span onclick="toggleIlmDetail(${i})" style="font-size:18px;color:var(--tx3);flex-shrink:0" id="ilmarr-${i}">+</span>
+    </div>
+    <div class="lesson-expand" id="ilmdetail-${i}" style="background:#fff;border:.5px solid var(--bd);border-radius:var(--rs);padding:12px;margin-bottom:6px">
+      <div style="font-size:13px;color:var(--tx2);line-height:1.8;white-space:pre-line">${item.detail}</div>
+    </div>`;
+  }).join('');
+}
+renderIlm();
+function toggleIlmDetail(i){
+  const d=document.getElementById('ilmdetail-'+i), arr=document.getElementById('ilmarr-'+i);
+  if(!d) return;
+  d.classList.toggle('open');
+  arr.textContent=d.classList.contains('open')?'−':'+';
+}
+
+// ===== HABITS =====
+function renderHabits(){
+  const c=document.getElementById('hab-cont');
+  if(!c) return;
+  c.innerHTML=S.habits.map((h,hi)=>{
+    const streak=h.days.filter(Boolean).length;
+    return `<div class="hab-row">
+      <div class="hab-name"><span>${h.name}</span><span style="font-size:10px;color:var(--tx3)">${streak}/7 ✅</span></div>
+      <div class="hab-grid">${h.days.map((d,di)=>`<button class="hday ${d?'done':''} ${di===5?'today-h':''}" onclick="toggleHabit(${hi},${di})">${d?'✓':di+1}</button>`).join('')}</div>
+    </div>`;
+  }).join('');
+}
+function toggleHabit(hi,di){S.habits[hi].days[di]=S.habits[hi].days[di]?0:1;renderHabits();}
+renderHabits();
+
+// ===== FOCUS =====
+function updateFocDisp(){
+  const m=Math.floor(S.focSecs/60), s=S.focSecs%60;
+  const el=document.getElementById('foc-disp');
+  if(el) el.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+function startFocus(){
+  const btn=document.getElementById('foc-start');
+  if(S.focRunning){
+    clearInterval(S.focInterval);S.focRunning=false;
+    if(btn) btn.textContent='▶ Davom';return;
+  }
+  S.focRunning=true;
+  if(btn){btn.textContent='⏸ To\'xtat';}
+  S.focInterval=setInterval(()=>{
+    S.focSecs--;updateFocDisp();
+    if(S.focSecs<=0){
+      clearInterval(S.focInterval);S.focRunning=false;S.focSessions++;
+      const sc=document.getElementById('foc-sess');
+      if(sc) sc.textContent='Bugun: '+S.focSessions+' ta sessiya 🎯';
+      if(btn) btn.textContent='▶ Boshlash';
+      resetFocus();
+    }
+  },1000);
+}
+function resetFocus(){
+  clearInterval(S.focInterval);S.focRunning=false;
+  const sel=document.getElementById('foc-mode');
+  S.focSecs=(sel?parseInt(sel.value):25)*60;
+  updateFocDisp();
+  const btn=document.getElementById('foc-start');
+  if(btn) btn.textContent='▶ Boshlash';
+}
+updateFocDisp();
+
+// ===== KALENDAR =====
+function renderCal(){
+  const year=S.calYear, month=S.calMonth;
+  const title=document.getElementById('cal-title');
+  if(title) title.textContent=MONTHS[month]+' '+year;
+  const grid=document.getElementById('cal-grid');
+  if(!grid) return;
+  const firstDay=new Date(year,month,1).getDay();
+  const startOffset=(firstDay+6)%7;
+  const daysInMonth=new Date(year,month+1,0).getDate();
+  const daysInPrev=new Date(year,month,0).getDate();
+  let cells='';
+  for(let i=0;i<startOffset;i++){
+    const d=daysInPrev-startOffset+1+i;
+    cells+=`<div class="cal-day other-month"><div class="cal-dn">${d}</div></div>`;
+  }
+  for(let d=1;d<=daysInMonth;d++){
+    const isToday=year===today.getFullYear()&&month===today.getMonth()&&d===today.getDate();
+    const key=year+'-'+(month+1)+'-'+d;
+    const log=S.log[key];
+    const hasData=log&&(log.tasks.length>0||log.namoz.length>0||(log.suras&&log.suras.length>0));
+    let dots='';
+    if(log){
+      if(log.tasks.length>0) dots+=`<div class="cal-dot" style="background:var(--pur)"></div>`;
+      if(log.namoz.length>0) dots+=`<div class="cal-dot" style="background:var(--teal)"></div>`;
+      if(log.suras&&log.suras.length>0) dots+=`<div class="cal-dot" style="background:var(--amb)"></div>`;
+      if(log.biz&&log.biz.length>0) dots+=`<div class="cal-dot" style="background:var(--cor)"></div>`;
+    }
+    cells+=`<div class="cal-day ${isToday?'today':''} ${hasData?'has-data':''}" onclick="showCalDetail('${key}',${d})">
+      <div class="cal-dn">${d}</div>
+      <div class="cal-dots">${dots}</div>
+    </div>`;
+  }
+  const remaining=(7-((startOffset+daysInMonth)%7))%7;
+  for(let i=1;i<=remaining;i++) cells+=`<div class="cal-day other-month"><div class="cal-dn">${i}</div></div>`;
+  grid.innerHTML=cells;
+}
+function calPrev(){S.calMonth--;if(S.calMonth<0){S.calMonth=11;S.calYear--;}renderCal();}
+function calNext(){S.calMonth++;if(S.calMonth>11){S.calMonth=0;S.calYear++;}renderCal();}
+function showCalDetail(key,d){
+  const log=S.log[key];
+  const detail=document.getElementById('cal-detail');
+  const detDate=document.getElementById('cal-detail-date');
+  const detContent=document.getElementById('cal-detail-content');
+  if(!detail||!detDate||!detContent) return;
+  const [y,m,day]=key.split('-');
+  detDate.textContent=day+' '+MONTHS[parseInt(m)-1]+' '+y+' — faoliyat';
+  if(!log||(!log.tasks.length&&!log.namoz.length&&!(log.suras&&log.suras.length)&&!(log.biz&&log.biz.length)&&!log.time)){
+    detContent.innerHTML='<div style="font-size:13px;color:var(--tx3);padding:8px 0">Bu kun uchun ma\'lumot yo\'q.</div>';
+  } else {
+    let html='';
+    if(log.tasks&&log.tasks.length) html+=`<div style="margin-bottom:8px"><div style="font-size:11px;color:var(--tx3);margin-bottom:4px">✅ BAJARILGAN VAZIFALAR</div>${log.tasks.map(t=>`<div style="font-size:13px;color:var(--tx);padding:3px 0">• ${t}</div>`).join('')}</div>`;
+    if(log.namoz&&log.namoz.length) html+=`<div style="margin-bottom:8px"><div style="font-size:11px;color:var(--tx3);margin-bottom:4px">🕌 NAMOZLAR</div>${log.namoz.map(n=>`<div style="font-size:13px;color:var(--teal);padding:3px 0">• ${n} ✓</div>`).join('')}</div>`;
+    if(log.suras&&log.suras.length) html+=`<div style="margin-bottom:8px"><div style="font-size:11px;color:var(--tx3);margin-bottom:4px">📖 YODLANGAN SURALAR</div>${log.suras.map(s=>`<div style="font-size:13px;color:var(--amb);padding:3px 0">• ${s}</div>`).join('')}</div>`;
+    if(log.biz&&log.biz.length) html+=`<div style="margin-bottom:8px"><div style="font-size:11px;color:var(--tx3);margin-bottom:4px">💼 BIZNES DARSLARI</div>${log.biz.map(b=>`<div style="font-size:13px;color:var(--cor);padding:3px 0">• ${b}</div>`).join('')}</div>`;
+    if(log.books&&log.books.length) html+=`<div style="margin-bottom:8px"><div style="font-size:11px;color:var(--tx3);margin-bottom:4px">📚 KITOB</div>${log.books.map(b=>`<div style="font-size:13px;color:var(--pur);padding:3px 0">• ${b}</div>`).join('')}</div>`;
+    if(log.time) html+=`<div style="font-size:12px;color:var(--tx3)">⏱ Sarflangan vaqt: ${Math.round(log.time/60)} daqiqa</div>`;
+    detContent.innerHTML=html;
+  }
+  detail.style.display='block';
+}
+
+// ===== STATS =====
+function updateStats(){
+  const done=S.tasks.filter(t=>t.done).length;
+  const total=S.tasks.length;
+  const el=document.getElementById('d-tasks');
+  if(el) el.textContent=done+'/'+total;
+  const el2=document.getElementById('task-count-d');
+  if(el2) el2.textContent=done+'/'+total;
+  const allTime=Object.values(S.log).reduce((sum,l)=>sum+(l.time||0),0);
+  const el3=document.getElementById('stat-time');
+  if(el3) el3.textContent=Math.round(allTime/60)+' min';
+  const allTasks=Object.values(S.log).reduce((sum,l)=>sum+(l.tasks||[]).length,0);
+  const el4=document.getElementById('stat-tasks');
+  if(el4) el4.textContent=allTasks;
+  const allNamoz=Object.values(S.log).reduce((sum,l)=>sum+(l.namoz||[]).length,0);
+  const el5=document.getElementById('stat-namoz');
+  if(el5) el5.textContent=allNamoz;
+  const el6=document.getElementById('stat-sura');
+  if(el6) el6.textContent=S.surasDone.length;
+  const el7=document.getElementById('stat-biz');
+  if(el7) el7.textContent=S.bizDone.length;
+}
+updateStats();
+
+// ===== QUOTES =====
+const quotes=[
+  {t:'"Intizom — ozodlikning eng oliy shaklidir."',a:'— Jorge Bucay'},
+  {t:'"O\'z nafsini yenggan kishi shaharlarni zabt etgandan kuchliroq."',a:'— Hadis'},
+  {t:'"Katta maqsadlar kichik kundalik harakatlardan quriladi."',a:'— James Clear'},
+  {t:'"Yoshlik — eng katta boylik. Uni ilm va amal bilan to\'ldir."',a:'— Hasan Mamasaidov'},
+  {t:'"Birinchi o\'zingni qur, keyin dunyoni."',a:'— My Life Planner'}
+];
+let qi=0;
+setInterval(()=>{
+  qi=(qi+1)%quotes.length;
+  const qt=document.getElementById('q-txt'), qa=document.getElementById('q-auth');
+  if(qt) qt.textContent=quotes[qi].t;
+  if(qa) qa.textContent=quotes[qi].a;
+},8000);
+
+renderCal();
+renderVazifalar();
+</script>
+</body>
+</html>
